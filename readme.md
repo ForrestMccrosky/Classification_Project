@@ -1,0 +1,2 @@
+This repository will be used to give a complete overview of a Classification modeling project. 
+This repository will display key materials in building an accurate classificsation model that predicts the churn of customers from a Telco Database in SQL in the Codeup Database.
