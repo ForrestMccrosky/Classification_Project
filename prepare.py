@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer 
 
@@ -29,3 +31,16 @@ def test_train_split(df):
                                    random_state=713,
                                    stratify= train.churn)
     return train, validate, test
+
+####################################Graph Numerical Columns#######################################
+
+def graph_distributions(df):
+    '''
+    This functions takes in a dataframe and displays
+    the distribution of each numeric column.
+    '''
+    for col in df.columns:
+        if df[col].dtype != 'object':
+            plt.hist(df[col])
+            plt.title(f'Distribution of {col}')
+            plt.show()
