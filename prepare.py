@@ -24,7 +24,7 @@ def test_train_split(df):
     performs a split, stratifies by churn.
     Returns train, validate, and test dfs.
     '''
-     train_validate, test = train_test_split(df, test_size=.2, 
+    train_validate, test = train_test_split(df, test_size=.2, 
                                         random_state=713,
                                         stratify = df.churn)
     train, validate = train_test_split(train_validate, test_size=.3, 

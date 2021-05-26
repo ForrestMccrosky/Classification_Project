@@ -22,8 +22,17 @@ def get_telco_data():
     from the Telco database into a pandas dataframe
     '''
 
-    sql_query  = 'SELECT * From customers'
-    df = pd.read_sql(sql_query, sql_connect('telco_churn'))
+    query = 
+    '''
+    SELECT *
+    FROM customers
+    JOIN contract_types USING(contract_type_id)
+    JOIN internet_service_types USING(internet_service_type_id)
+    JOIN payment_types USING(payment_type_id);
+    '''
+
+    df = pd.read_sql(query, sql_connect('telco_churn'))
+
     return df
 
 
