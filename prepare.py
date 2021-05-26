@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer 
+from sklearn.preprocessing import LabelEncoder
+
 
 #############################Clean Blank Strings and Convert to Floats##############################
 
@@ -43,3 +45,18 @@ def graph_distributions(df):
             plt.hist(df[col])
             plt.title(f'Distribution of {col}')
             plt.show()
+
+####################################Converting to Machine Format##################################
+            
+
+    
+def convert_cats(df):
+    '''
+    This function takes the categorical variables of the Telco_churn dataframe
+    and converts them into numbers for statistical testing and model building
+    '''
+    cols3 = [col for col in list(df.columns) if df[col].dtype == 'object']
+    label_encoder = LabelEncoder()
+    for col in cols3:
+        df[col] = label_encoder.fit_transform(df[col])
+    return df
