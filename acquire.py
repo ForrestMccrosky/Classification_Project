@@ -22,8 +22,7 @@ def get_telco_data():
     from the Telco database into a pandas dataframe
     '''
 
-    query = 
-    '''
+    query = '''
     SELECT *
     FROM customers
     JOIN contract_types USING(contract_type_id)

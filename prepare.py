@@ -18,18 +18,17 @@ def prep_telco(df):
 
 #############################Train Validate Test Split Function####################################
 
-def test_train_split(df):
+def split_data(df):
     '''
-    This function take in the telco_churn data data acquired by aquire.py, get_db_data(),
-    performs a split, stratifies by churn.
-    Returns train, validate, and test dfs.
+    This function takes in the telco_df dataframe and splits it into a train, validate, and
+    test dataframe for exploratoy analysis and modeling purposes
     '''
     train_validate, test = train_test_split(df, test_size=.2, 
-                                        random_state=713,
+                                        random_state=123,
                                         stratify = df.churn)
     train, validate = train_test_split(train_validate, test_size=.3, 
-                                   random_state=713,
-                                   stratify= train.churn)
+                                   random_state=123,
+                                   stratify= train_validate.churn)
     return train, validate, test
 
 ####################################Graph Numerical Columns#######################################
