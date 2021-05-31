@@ -15,6 +15,7 @@ def prep_telco(df):
     to 0. Also set the entire column to the float data type that way it can be used for statistical testing.
     """
     df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
+    return df
 
 
 
@@ -33,18 +34,6 @@ def split_data(df):
                                    stratify= train_validate.churn)
     return train, validate, test
 
-####################################Graph Numerical Columns#######################################
-
-def graph_distributions(df):
-    '''
-    This functions takes in a dataframe and displays
-    the distribution of each numeric column.
-    '''
-    for col in df.columns:
-        if df[col].dtype != 'object':
-            plt.hist(df[col])
-            plt.title(f'Distribution of {col}')
-            plt.show()
 
 ####################################Converting to Machine Format##################################
             
@@ -60,3 +49,25 @@ def convert_cats(df):
     for col in cols3:
         df[col] = label_encoder.fit_transform(df[col])
     return df
+
+####################################Graph Distributions##################################
+
+
+def graph_distributions(df):
+    '''
+    This function graphs the distributions of the categorical variables I want to look at
+    '''
+    
+    cols = ['gender', 'senior_citizen', 'partner',
+           'dependents', 'phone_service', 'multiple_lines',
+           'paperless_billing', 'churn', 'contract_type', 'internet_service_type', 'payment_type']
+    
+    for col in df[cols]:
+        plt.hist(df[col])
+        plt.title(f'Distribution of {col}')
+        plt.ylabel('Number of Customers')
+        plt.xlabel(f'{col}: values')
+        plt.show()
+        
+
+       
