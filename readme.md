@@ -38,35 +38,45 @@
 
 ## Engineered Column Dictionary
 
-| Column Name    | Description                                                                                          | Data Type |
-|----------------|------------------------------------------------------------------------------------------------------|-----------|
-| month-to-month | categorical variable with a boolean value of 1 if customer is not in a contract or 0 if they are     | int64     |
-| fiber          | categorical variable with a boolean value of 1 if a customer has fiber internet and 0 if they do not | int64     |
+| Column Name    | Description                                                                                               | Data Type |
+|----------------|-----------------------------------------------------------------------------------------------------------|-----------|
+| month-to-month | categorical variable with a boolean value of 1 if customer is not in a contract or 0 if they are          | int64     |
+| fiber          | categorical variable with a boolean value of 1 if a customer has fiber internet and 0 if they do not      | int64     |
+| e_check        | categorical variable with a boolean value of 1 if the customer uses electronic checks and 0 if they don't | int64     |
+| 2_contract     | categorical variable with a boolean value of 1 if a customer has a 2 year contract and 0 if not           | int64     |
+
 
 ## Ideas and Hypothesis
 
 ### Question 1: Is there a relationship between customers with paperless billing and whether or not they churned
- - $H_0$: There is no relationship between paperless billing and whether or not a customer has churned
- - $H_a$: There is a relationship between paperless billing customers and whether or not they have churned
+ - Null Hypothesis: There is no relationship between paperless billing and whether or not a customer has churned
+ - Alternate Hypothesis: There is a relationship between paperless billing customers and whether or not they have churned
 
 ### After some chi squared testing we determined there is a significant relationship between paperless billing customers and whether or not they have churned
 
 ### Question 2: Is there a relationship between if a customer has multiple lines and whether or not they have churned
- - $H_0$: There is no relationship between customers having multiple lines and whether or not they have churned
- - $H_a$: There is a relationship between customers having multiple lines and whether or not they have churned
+ - Null Hypothesis: There is no relationship between customers having multiple lines and whether or not they have churned
+ - Alternate Hypothesis: There is a relationship between customers having multiple lines and whether or not they have churned
 
 ### After some chi squared testing we can determine there is a significant relationship between customers who have multiple lines and whether or not they have churned.
 
 ## Models
  - After lots of feature and parameter tweaking in conclusion the Decision Tree model performed the best and was used on the test dataframe.
-    - Accuracy was 75.08% compared to the basline of 73.47%
-    - Precision was a solid 82.03%
-    - The best recall achieved was 55.88%
+    - Accuracy was 76.72% compared to the basline of 73.47%
+    - Precision was a solid 82.5%
+    - The best recall achieved was 60.8%
  - With more time I think more feature engineering could be used to better optimize for recall to improve the True Positive rate.
 
 ## Reccomendations
- - Use the prediction model to uncover 6 out of every 10 customers who will churn and target them with greater incentives or promotions
- - Given the models good precision and decent recall prediction we can use it to save an estimated 60% of the churn customers
+ - Use the prediction model to uncover 6 out of every 10 customers who will churn and target them with greater incentives or promotions.
+ - Given the models good precision and decent recall prediction we can use it to save an estimated 60% of the churn customers.
+
+## Project Reproduction
+ - You will need your own env.py file with your Codeup database credentials to use the sql_connect function
+
+ - Read the readme file and download the acquire, prepare, and evaluate.py files. Use the functions to recreate the dataframes and seperate the data ad the final_notebook suggest. Follow the comments to complete statistical testing and finally use the visualizations to create your own parameters and build the models.
+ - Last but not least choose your best models from the training dataframe to run a validate test. Then choose your best validate scored model to run the model on the test dataframe.
+ - Finish with concluding remarks and reccomendations for business use of the model.
 
 
 
